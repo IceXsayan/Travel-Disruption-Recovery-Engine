@@ -1,0 +1,623 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-heading);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+
+  /* Status colors — kept intact for functionality */
+  --color-confirmed: #2d6a4f;
+  --color-at-risk: #c77b21;
+  --color-disrupted: #c0392b;
+  --color-rebooked: #1a3c5e;
+  --color-cancelled: #6b7280;
+}
+
+/* ══════════════════════════════════════════════════════════
+   WANDOR-INSPIRED EARTHY LIGHT THEME
+   Palette:  cream #f5f0e8  |  terracotta #b5651d  |  dark navy #1a1a2e
+   ══════════════════════════════════════════════════════════ */
+:root {
+  /* Background: warm parchment / cream */
+  --background: oklch(0.968 0.014 75);
+  --foreground: oklch(0.18 0.022 60);
+
+  /* Cards: slightly warm white */
+  --card: oklch(0.99 0.006 75);
+  --card-foreground: oklch(0.18 0.022 60);
+  --popover: oklch(0.99 0.006 75);
+  --popover-foreground: oklch(0.18 0.022 60);
+
+  /* Primary: dark navy (like wandor CTA buttons) */
+  --primary: oklch(0.20 0.040 265);
+  --primary-foreground: oklch(0.97 0.005 75);
+
+  /* Secondary / muted: warm stone */
+  --secondary: oklch(0.93 0.016 75);
+  --secondary-foreground: oklch(0.30 0.030 60);
+  --muted: oklch(0.93 0.016 75);
+  --muted-foreground: oklch(0.50 0.025 70);
+
+  /* Accent: warm sand */
+  --accent: oklch(0.90 0.022 80);
+  --accent-foreground: oklch(0.25 0.030 60);
+
+  /* Destructive: terracotta red */
+  --destructive: oklch(0.55 0.20 30);
+
+  /* Borders: warm beige stroke */
+  --border: oklch(0.85 0.022 75);
+  --input: oklch(0.90 0.018 75);
+  --ring: oklch(0.55 0.15 50);
+
+  /* Charts: earthy palette */
+  --chart-1: oklch(0.55 0.16 50);   /* terracotta */
+  --chart-2: oklch(0.45 0.12 145);  /* forest green */
+  --chart-3: oklch(0.70 0.15 86);   /* warm gold */
+  --chart-4: oklch(0.50 0.12 270);  /* muted navy */
+  --chart-5: oklch(0.65 0.14 30);   /* burnt sienna */
+
+  --radius: 0.75rem;
+
+  /* Sidebar: slightly darker warm parchment */
+  --sidebar: oklch(0.955 0.018 75);
+  --sidebar-foreground: oklch(0.18 0.022 60);
+  --sidebar-primary: oklch(0.20 0.040 265);
+  --sidebar-primary-foreground: oklch(0.97 0.005 75);
+  --sidebar-accent: oklch(0.90 0.022 80);
+  --sidebar-accent-foreground: oklch(0.25 0.030 60);
+  --sidebar-border: oklch(0.85 0.022 75);
+  --sidebar-ring: oklch(0.55 0.15 50);
+}
+
+/* Dark mode: keep a warm dark variant just in case */
+.dark {
+  --background: oklch(0.968 0.014 75);
+  --foreground: oklch(0.18 0.022 60);
+  --card: oklch(0.99 0.006 75);
+  --card-foreground: oklch(0.18 0.022 60);
+  --popover: oklch(0.99 0.006 75);
+  --popover-foreground: oklch(0.18 0.022 60);
+  --primary: oklch(0.20 0.040 265);
+  --primary-foreground: oklch(0.97 0.005 75);
+  --secondary: oklch(0.93 0.016 75);
+  --secondary-foreground: oklch(0.30 0.030 60);
+  --muted: oklch(0.93 0.016 75);
+  --muted-foreground: oklch(0.50 0.025 70);
+  --accent: oklch(0.90 0.022 80);
+  --accent-foreground: oklch(0.25 0.030 60);
+  --destructive: oklch(0.55 0.20 30);
+  --border: oklch(0.85 0.022 75);
+  --input: oklch(0.90 0.018 75);
+  --ring: oklch(0.55 0.15 50);
+  --chart-1: oklch(0.55 0.16 50);
+  --chart-2: oklch(0.45 0.12 145);
+  --chart-3: oklch(0.70 0.15 86);
+  --chart-4: oklch(0.50 0.12 270);
+  --chart-5: oklch(0.65 0.14 30);
+  --sidebar: oklch(0.955 0.018 75);
+  --sidebar-foreground: oklch(0.18 0.022 60);
+  --sidebar-primary: oklch(0.20 0.040 265);
+  --sidebar-primary-foreground: oklch(0.97 0.005 75);
+  --sidebar-accent: oklch(0.90 0.022 80);
+  --sidebar-accent-foreground: oklch(0.25 0.030 60);
+  --sidebar-border: oklch(0.85 0.022 75);
+  --sidebar-ring: oklch(0.55 0.15 50);
+}
+
+@layer base {
+  * { @apply border-border outline-ring/50; }
+  body { @apply bg-background text-foreground; }
+  /* Use Inter for body, Playfair Display for headings */
+  html { @apply font-sans scroll-smooth; }
+  h1, h2, h3 { font-family: var(--font-heading), 'Georgia', serif; }
+}
+
+/* ══════════════════════════════════════════════════════════
+   HEADING FONT UTILITY
+   ══════════════════════════════════════════════════════════ */
+.font-heading {
+  font-family: var(--font-heading), 'Georgia', serif;
+}
+
+/* ══════════════════════════════════════════════════════════
+   EARTHY TEXTURE BACKGROUND — subtle paper grain
+   ══════════════════════════════════════════════════════════ */
+.paper-bg {
+  background-color: oklch(0.968 0.014 75);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+/* ══════════════════════════════════════════════════════════
+   REACT FLOW OVERRIDES — warm tones
+   ══════════════════════════════════════════════════════════ */
+.react-flow__node { cursor: pointer !important; }
+.react-flow__attribution { display: none !important; }
+.react-flow__background { opacity: 0.3; }
+.react-flow__edge-path {
+  stroke-width: 2;
+  filter: drop-shadow(0 0 3px rgba(181, 101, 29, 0.3));
+}
+
+/* ══════════════════════════════════════════════════════════
+   CUSTOM SCROLLBAR — warm tones
+   ══════════════════════════════════════════════════════════ */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: oklch(0.72 0.06 75); border-radius: 2px; }
+
+/* ══════════════════════════════════════════════════════════
+   STATUS PULSE ANIMATIONS
+   ══════════════════════════════════════════════════════════ */
+@keyframes ripple-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(192, 57, 43, 0.5); }
+  70%  { box-shadow: 0 0 0 12px rgba(192, 57, 43, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(192, 57, 43, 0); }
+}
+.animate-ripple { animation: ripple-pulse 1.5s ease-out infinite; }
+
+@keyframes amber-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(199, 123, 33, 0.4); }
+  70%  { box-shadow: 0 0 0 10px rgba(199, 123, 33, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(199, 123, 33, 0); }
+}
+.animate-amber-pulse { animation: amber-pulse 2s ease-out infinite; }
+
+@keyframes target-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(26, 60, 94, 0.5); }
+  70%  { box-shadow: 0 0 0 12px rgba(26, 60, 94, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(26, 60, 94, 0); }
+}
+.animate-target-pulse { animation: target-pulse 1.4s ease-out infinite; }
+
+/* ══════════════════════════════════════════════════════════
+   CARD STYLES — warm paper cards
+   ══════════════════════════════════════════════════════════ */
+.glass {
+  background: rgba(255, 250, 240, 0.7);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  border: 1px solid rgba(181, 101, 29, 0.12);
+}
+.glass-card {
+  background: rgba(255, 252, 245, 0.85);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  border: 1px solid rgba(181, 101, 29, 0.15);
+}
+
+/* Elevated card — warm paper with subtle shadow */
+.ref-card {
+  background: rgba(255, 252, 245, 0.9);
+  border: 1px solid rgba(181, 101, 29, 0.15);
+  border-radius: 12px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.ref-card:hover {
+  border-color: rgba(181, 101, 29, 0.30);
+  box-shadow: 0 4px 24px rgba(100, 50, 10, 0.10);
+}
+
+/* ══════════════════════════════════════════════════════════
+   GLOW UTILITIES — warm earthy tones
+   ══════════════════════════════════════════════════════════ */
+.glow-blue   { box-shadow: 0 0 20px rgba(26, 60, 94, 0.25),  0 0 40px rgba(26, 60, 94, 0.10); }
+.glow-green  { box-shadow: 0 0 20px rgba(45, 106, 79, 0.30),  0 0 40px rgba(45, 106, 79, 0.12); }
+.glow-red    { box-shadow: 0 0 20px rgba(192, 57, 43, 0.30),  0 0 40px rgba(192, 57, 43, 0.12); }
+.glow-amber  { box-shadow: 0 0 20px rgba(199, 123, 33, 0.30), 0 0 40px rgba(199, 123, 33, 0.12); }
+.glow-purple { box-shadow: 0 0 20px rgba(90, 60, 120, 0.25),  0 0 40px rgba(90, 60, 120, 0.10); }
+.glow-terra  { box-shadow: 0 0 20px rgba(181, 101, 29, 0.30), 0 0 40px rgba(181, 101, 29, 0.12); }
+
+/* ══════════════════════════════════════════════════════════
+   GRADIENT TEXT — warm earthy palette
+   ══════════════════════════════════════════════════════════ */
+.gradient-text-blue {
+  background: linear-gradient(135deg, #1a3c5e 0%, #2d6a4f 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.gradient-text-primary {
+  background: linear-gradient(135deg, #b5651d 0%, #8b3e17 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.gradient-text-hero {
+  background: linear-gradient(135deg, #2c1a0e 0%, #5c2e00 40%, #b5651d 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.gradient-text-terra {
+  background: linear-gradient(135deg, #b5651d 0%, #e07b39 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ══════════════════════════════════════════════════════════
+   STAT CARD — colored top stripe, warm tones
+   ══════════════════════════════════════════════════════════ */
+.stat-card {
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 252, 245, 0.9);
+  border: 1px solid rgba(181, 101, 29, 0.15);
+  border-radius: 12px;
+  padding: 16px;
+  transition: all 0.2s;
+}
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  border-radius: 12px 12px 0 0;
+}
+.stat-card-blue::before   { background: linear-gradient(90deg, #1a3c5e, #2d6a4f); }
+.stat-card-amber::before  { background: linear-gradient(90deg, #c77b21, #e07b39); }
+.stat-card-red::before    { background: linear-gradient(90deg, #c0392b, #e74c3c); }
+.stat-card-green::before  { background: linear-gradient(90deg, #2d6a4f, #52b788); }
+
+/* ══════════════════════════════════════════════════════════
+   SIDEBAR — warm sidebar active item
+   ══════════════════════════════════════════════════════════ */
+.sidebar-item-active {
+  background: rgba(181, 101, 29, 0.10);
+  border-left: 2px solid #b5651d;
+}
+
+/* ══════════════════════════════════════════════════════════
+   PLAN CARD — recovery plan cards
+   ══════════════════════════════════════════════════════════ */
+.plan-card-recommended {
+  background: rgba(45, 106, 79, 0.05);
+  border: 1px solid rgba(45, 106, 79, 0.20);
+}
+.plan-card-recommended:hover {
+  border-color: rgba(45, 106, 79, 0.35);
+  box-shadow: 0 0 30px rgba(45, 106, 79, 0.10);
+}
+
+/* ══════════════════════════════════════════════════════════
+   RISK RING
+   ══════════════════════════════════════════════════════════ */
+@keyframes risk-fill {
+  from { stroke-dashoffset: 200; }
+  to   { stroke-dashoffset: var(--ring-offset, 0); }
+}
+
+/* ══════════════════════════════════════════════════════════
+   HERO ORBS — warm earthy radial gradients
+   ══════════════════════════════════════════════════════════ */
+.hero-orb-1 {
+  position: absolute;
+  top: -80px; left: -150px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(181,101,29,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-orb-2 {
+  position: absolute;
+  top: 80px; right: -150px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(45,106,79,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-orb-3 {
+  position: absolute;
+  bottom: -80px; left: 50%;
+  transform: translateX(-50%);
+  width: 900px; height: 350px;
+  background: radial-gradient(ellipse, rgba(181,101,29,0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-video-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.hero-video-overlay {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 700px;
+  pointer-events: none;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    oklch(0.968 0.014 75 / 1) 0%,
+    oklch(0.968 0.014 75 / 0.75) 45%,
+    oklch(0.968 0.014 75 / 0) 100%
+  );
+}
+
+/* ══════════════════════════════════════════════════════════
+   NAVBAR SEARCH
+   ══════════════════════════════════════════════════════════ */
+.nav-search {
+  background: rgba(255, 252, 245, 0.7);
+  border: 1px solid rgba(181, 101, 29, 0.20);
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 12px;
+  color: oklch(0.40 0.025 70);
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+  width: 200px;
+}
+.nav-search:focus {
+  background: rgba(255, 252, 245, 0.95);
+  border-color: rgba(181, 101, 29, 0.45);
+  color: oklch(0.20 0.030 60);
+}
+.nav-search::placeholder { color: oklch(0.60 0.020 70); }
+
+/* ══════════════════════════════════════════════════════════
+   AVATAR
+   ══════════════════════════════════════════════════════════ */
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #b5651d, #8b3e17);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: white;
+  flex-shrink: 0;
+}
+
+/* ══════════════════════════════════════════════════════════
+   PROGRESS / RISK BARS
+   ══════════════════════════════════════════════════════════ */
+.risk-bar-track {
+  height: 6px;
+  border-radius: 9999px;
+  background: rgba(181, 101, 29, 0.10);
+  overflow: hidden;
+}
+.risk-bar-fill {
+  height: 100%;
+  border-radius: 9999px;
+  transition: width 1s ease-out;
+}
+
+/* ══════════════════════════════════════════════════════════
+   ALERT STRIPE
+   ══════════════════════════════════════════════════════════ */
+.alert-stripe {
+  position: relative;
+  padding-left: 12px;
+}
+.alert-stripe::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  border-radius: 0 2px 2px 0;
+}
+.alert-stripe-red::before   { background: #c0392b; }
+.alert-stripe-amber::before { background: #c77b21; }
+.alert-stripe-green::before { background: #2d6a4f; }
+.alert-stripe-blue::before  { background: #1a3c5e; }
+
+/* ══════════════════════════════════════════════════════════
+   TAB PILLS — warm tones
+   ══════════════════════════════════════════════════════════ */
+.tab-pill {
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 600;
+  transition: all 0.15s;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.tab-pill-active {
+  background: rgba(181, 101, 29, 0.15);
+  color: #8b3e17;
+  border: 1px solid rgba(181, 101, 29, 0.35);
+}
+.tab-pill-inactive {
+  background: transparent;
+  color: oklch(0.55 0.025 70);
+  border: 1px solid transparent;
+}
+.tab-pill-inactive:hover {
+  color: oklch(0.30 0.030 60);
+  background: rgba(181, 101, 29, 0.06);
+}
+
+/* ══════════════════════════════════════════════════════════
+   WANDOR-STYLE PILL BADGE
+   ══════════════════════════════════════════════════════════ */
+.wandor-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 14px;
+  border-radius: 9999px;
+  background: rgba(181, 101, 29, 0.10);
+  border: 1px solid rgba(181, 101, 29, 0.25);
+  font-size: 11px;
+  font-weight: 600;
+  color: #8b3e17;
+  letter-spacing: 0.04em;
+}
+
+/* ══════════════════════════════════════════════════════════
+   WANDOR-STYLE PRIMARY BUTTON
+   ══════════════════════════════════════════════════════════ */
+.btn-wandor-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border-radius: 9999px;
+  background: #1a1a2e;
+  color: #f5f0e8;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 4px 20px rgba(26, 26, 46, 0.25);
+}
+.btn-wandor-primary:hover {
+  background: #2a2a42;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 28px rgba(26, 26, 46, 0.35);
+}
+
+/* ══════════════════════════════════════════════════════════
+   WANDOR-STYLE SECONDARY BUTTON (outline)
+   ══════════════════════════════════════════════════════════ */
+.btn-wandor-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 26px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  color: #1a1a2e;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  border: 1.5px solid rgba(26, 26, 46, 0.85);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+.btn-wandor-secondary:hover {
+  background: #ffffff;
+  border-color: #1a1a2e;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* ══════════════════════════════════════════════════════════
+   WANDOR NAVBAR — clean white/cream bar, dark text
+   ══════════════════════════════════════════════════════════ */
+.wandor-nav {
+  background: rgba(245, 240, 232, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(181, 101, 29, 0.12);
+}
+
+/* ══════════════════════════════════════════════════════════
+   REFLOW LOADER (kept for splash screen)
+   ══════════════════════════════════════════════════════════ */
+.reflow-loader-scene {
+  perspective: 900px;
+  position: relative;
+  z-index: 2;
+}
+.reflow-loader-stage {
+  position: relative;
+  transform-style: preserve-3d;
+  animation: reflow-loader-tilt 6s ease-in-out infinite;
+}
+@keyframes reflow-loader-tilt {
+  0%, 100% { transform: rotateX(8deg) rotateY(-6deg); }
+  50% { transform: rotateX(10deg) rotateY(6deg); }
+}
+.reflow-loader-base,
+.reflow-loader-shine {
+  margin: 0;
+  font-family: var(--font-heading), 'Georgia', serif;
+  font-weight: 800;
+  font-size: clamp(32px, 6vw, 64px);
+  letter-spacing: 4px;
+  line-height: 1;
+  white-space: nowrap;
+  user-select: none;
+}
+.reflow-loader-base {
+  color: transparent;
+  background: linear-gradient(180deg, #5c2e00 0%, #b5651d 50%, #e07b39 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px rgba(181, 101, 29, 0.4);
+  text-shadow: none;
+}
+.reflow-loader-shine {
+  position: absolute; top: 0; left: 0;
+  background: linear-gradient(100deg, transparent 40%, rgba(255,255,255,0.8) 50%, transparent 60%);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  mix-blend-mode: screen;
+  animation: reflow-loader-sweep 2s linear infinite;
+}
+@keyframes reflow-loader-sweep {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -100% 0; }
+}
+
+/* ══════════════════════════════════════════════════════════
+   HIDE NEXT.JS DEV BADGE
+   ══════════════════════════════════════════════════════════ */
+nextjs-portal,
+[data-nextjs-toast-wrapper],
+div[data-next-badge],
+button[aria-label*="Next.js"] {
+  display: none !important;
+}
